@@ -281,3 +281,9 @@
 .campana-panel small {
   color: var(--muted);
 }
+
+/* Más espacio encima de un subtítulo que debajo. */
+.form-card .desglose + .form-seccion,
+.form-card .etiquetas-productor + .form-seccion {
+  margin-top: 32px;
+}
