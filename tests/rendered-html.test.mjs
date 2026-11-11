@@ -70,7 +70,7 @@ test("includes the complete Avance 1 interactive scope", async () => {
   ];
   for (const view of requiredViews) assert.match(source, new RegExp(`${view}:`));
 
-  assert.match(source, /Guardar borrador/);
+  assert.match(source, /Guardar como borrador/);
   assert.match(source, /agrodirecto-products-v2/);
   assert.match(source, /mobile-bottom-nav/);
   assert.match(source, /Fundamento del proyecto/);
