@@ -11,13 +11,11 @@ const hostingConfig: { d1?: string; r2?: string } = existsSync(hostingPath)
 
 import { sites } from "./build/sites-vite-plugin";
 
-const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
-  "00000000-0000-4000-8000-000000000000";
+const SITE_CREATOR_PLACEHOLDER_DATABASE_ID = "00000000-0000-4000-8000-000000000000";
 
 const { d1, r2 } = hostingConfig;
 
-const isCodexSeatbeltSandbox =
-  process.env.CODEX_SANDBOX === "seatbelt";
+const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 
 const isVercel = !!process.env.VERCEL;
 
@@ -48,10 +46,7 @@ export default defineConfig(async () => {
   process.env.WRANGLER_LOG_PATH ??= ".wrangler/logs";
   process.env.MINIFLARE_REGISTRY_PATH ??= ".wrangler/registry";
 
-  const plugins = [
-    vinext(),
-    sites(),
-  ];
+  const plugins = [vinext(), sites()];
 
   if (isVercel) {
     plugins.push(nitro());

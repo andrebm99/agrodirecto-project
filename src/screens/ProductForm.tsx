@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 
 import { Icon } from "@/components/Icon";
-import { PRODUCT_IMAGE_PRESETS } from "@/data/products";
+import { PRODUCT_IMAGE_PRESETS } from "@/config/imagenes";
 import type { EstadoApp } from "@/hooks/estadoApp";
 import { useConsulta } from "@/hooks/useConsulta";
 import { ApiError, catalogoApi, gestionProductosApi } from "@/services/api";

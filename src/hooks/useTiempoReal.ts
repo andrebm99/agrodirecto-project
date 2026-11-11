@@ -41,15 +41,20 @@ export function useTiempoReal(
     });
     nuevo.onConnect = () => setCliente(nuevo);
     nuevo.onWebSocketClose = () => setCliente((actual) => (actual === nuevo ? null : actual));
-    nuevo.activate();
+    // Se activa con una pequeña espera: si el efecto se desmonta enseguida (modo estricto de React en
+    // desarrollo, o un login inmediato), no llega a abrirse un socket que habría que cerrar a medias.
+    const espera = window.setTimeout(() => nuevo.activate(), 150);
     return () => {
-      void nuevo.deactivate();
+      window.clearTimeout(espera);
+      // force: cierra sin enviar DISCONNECT (evita escribir en un socket que ya se está cerrando).
+      if (nuevo.active) void nuevo.deactivate({ force: true });
     };
   }, [usuarioId]);
 
   // Suscripciones a pedidos según el rol.
   useEffect(() => {
-    if (!cliente || !usuarioId) return;
+    // Un cliente que ya se está cerrando (por ejemplo, al iniciar sesión) no acepta suscripciones.
+    if (!cliente?.connected || !usuarioId) return;
     const alEvento = (mensaje: IMessage) => {
       const evento = JSON.parse(mensaje.body) as EventoPedido;
       setVersion((v) => v + 1);
@@ -67,17 +72,28 @@ export function useTiempoReal(
         : productorIds
           ? productorIds.split(",").map((id) => `/topic/productores/${id}/pedidos`)
           : [];
-    const suscripciones: StompSubscription[] = destinos.map((d) => cliente.subscribe(d, alEvento));
+    const suscripciones: StompSubscription[] = [];
+    for (const destino of destinos) {
+      try {
+        suscripciones.push(cliente.subscribe(destino, alEvento));
+      } catch {
+        // Si la conexión se cayó justo ahora, la reconexión volverá a suscribir.
+      }
+    }
     return () => suscripciones.forEach((s) => s.unsubscribe());
   }, [cliente, usuarioId, rol, productorIds]);
 
   /** Stock en vivo de un producto (canal público). Devuelve la función para cancelar. */
   const escucharStock = (productoId: number, alCambiar: (evento: EventoStock) => void) => {
-    if (!cliente) return () => undefined;
-    const s = cliente.subscribe(`/topic/productos/${productoId}/stock`, (m) =>
-      alCambiar(JSON.parse(m.body)),
-    );
-    return () => s.unsubscribe();
+    if (!cliente?.connected) return () => undefined;
+    try {
+      const s = cliente.subscribe(`/topic/productos/${productoId}/stock`, (m) =>
+        alCambiar(JSON.parse(m.body)),
+      );
+      return () => s.unsubscribe();
+    } catch {
+      return () => undefined;
+    }
   };
 
   return { conectado: cliente !== null, version, escucharStock };

@@ -41,14 +41,14 @@ test("keeps starter preview artifacts removed", async () => {
   await assert.rejects(access(new URL("src/app/_sites-preview/", projectRoot)));
 });
 
-test("includes the complete Avance 1 interactive scope", async () => {
+test("includes the complete interactive scope connected to the API", async () => {
   const [source, styles] = await Promise.all([
     Promise.all(
       [
         "components/AgroDirectoApp.tsx",
         "screens/ProductForm.tsx",
         "screens/Home.tsx",
-        "services/storage.ts",
+        "hooks/useCarrito.ts",
       ].map((file) => readFile(new URL(`../src/${file}`, import.meta.url), "utf8")),
     ).then((files) => files.join("\n")),
     readFile(new URL("../src/styles/globals.css", import.meta.url), "utf8"),
@@ -67,13 +67,16 @@ test("includes the complete Avance 1 interactive scope", async () => {
     "publicar",
     "recibidos",
     "admin",
+    "seguridad",
+    "productores",
+    "perfil",
   ];
   for (const view of requiredViews) assert.match(source, new RegExp(`${view}:`));
 
   assert.match(source, /Guardar como borrador/);
-  assert.match(source, /agrodirecto-products-v2/);
+  assert.match(source, /agrodirecto-carrito-v3/);
   assert.match(source, /mobile-bottom-nav/);
-  assert.match(source, /Fundamento del proyecto/);
+  assert.match(source, /Una solución enfocada en coordinación y transparencia/);
   assert.match(styles, /@media \(max-width: 700px\)/);
   assert.match(styles, /\.mobile-bottom-nav/);
 });

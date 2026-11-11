@@ -21,7 +21,6 @@ export function Home({
       <section className="hero-section">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow">Comercio agrícola más directo</span>
             <h1>
               Del campo a tu negocio, <em>sin tantos intermediarios.</em>
             </h1>
@@ -71,12 +70,7 @@ export function Home({
       </section>
       <section className="category-strip">
         <div className="container category-row">
-          {[
-            "Tubérculos",
-            "Hortalizas",
-            "Frutas",
-            "Granos",
-          ].map((label) => (
+          {["Tubérculos", "Hortalizas", "Frutas", "Granos"].map((label) => (
             <button
               key={label}
               onClick={() => {
@@ -85,7 +79,9 @@ export function Home({
                 navigate("catalogo");
               }}
             >
-              <span><CategoryIcon label={label} /></span>
+              <span>
+                <CategoryIcon label={label} />
+              </span>
               {label}
             </button>
           ))}
@@ -95,7 +91,6 @@ export function Home({
         <div className="container">
           <div className="section-heading">
             <div>
-              <span className="eyebrow">Cosecha reciente</span>
               <h2>Productos disponibles esta semana</h2>
             </div>
             <button className="text-link" onClick={() => navigate("catalogo")}>
@@ -122,7 +117,6 @@ export function Home({
       <section className="value-section" id="como-funciona">
         <div className="container">
           <div className="center-heading">
-            <span className="eyebrow">Un proceso sencillo</span>
             <h2>Compra directo en cuatro pasos</h2>
             <p>Información clara para que productores y compradores coordinen mejor.</p>
           </div>
@@ -145,7 +139,6 @@ export function Home({
       <section className="project-foundation">
         <div className="container">
           <div className="center-heading">
-            <span className="eyebrow">Fundamento del proyecto</span>
             <h2>Una solución enfocada en coordinación y transparencia</h2>
             <p>
               El MVP valida primero la conexión comercial, antes de incorporar pagos o inteligencia
@@ -183,7 +176,6 @@ export function Home({
       <section className="impact-section">
         <div className="container impact-grid">
           <div>
-            <span className="eyebrow light">Nuestra propuesta</span>
             <h2>Más visibilidad para quien produce. Más claridad para quien compra.</h2>
           </div>
           <div className="impact-stats">
