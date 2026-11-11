@@ -2,7 +2,7 @@
 
 import type { AgroDirectoState } from "@/hooks/useAgroDirecto";
 
-export function Footer({ navigate, setModal }: Pick<AgroDirectoState, "navigate" | "setModal">) {
+export function Footer({ navigate }: Pick<AgroDirectoState, "navigate">) {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
