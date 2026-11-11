@@ -12,8 +12,8 @@ Cada tarea se desarrolla en su propia rama, se prueba y se integra a `main` con 
 | --- | ----------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------- | ---------- |
 | F0  | `chore/cliente-api`           | Cliente HTTP, tipos y servicios de la API                                        | S11–12 Consumo de API y peticiones asíncronas | Completada |
 | F1  | `feat/sesion-real`            | Login, registro y verificación en dos pasos reales; menú por rol                 | S13 Autenticación en el frontend              | Completada |
-| F2  | `feat/catalogo-api`           | Catálogo, ficha de producto, directorio de productores y favoritos desde la API  | S6 Navegación y estado · S12                  | Lista      |
-| F3  | `feat/compra`                 | Carrito, cotización transparente, pago simulado, mis pedidos, reclamos y reseñas | S11 Formularios · S12                         | Pendiente  |
+| F2  | `feat/catalogo-api`           | Catálogo, ficha de producto, directorio de productores y favoritos desde la API  | S6 Navegación y estado · S12                  | Completada |
+| F3  | `feat/compra`                 | Carrito, cotización transparente, pago simulado, mis pedidos, reclamos y reseñas | S11 Formularios · S12                         | Lista      |
 | F4  | `feat/panel-productor-agente` | Panel del productor y del agente de campo                                        | S11 Formularios · S12                         | Pendiente  |
 | F5  | `feat/tiempo-real`            | Pedidos y stock en vivo con WebSocket; campana de avisos                         | S9–10 Reactividad                             | Pendiente  |
 | F6  | `feat/admin`                  | Panel de administración                                                          | S12                                           | Pendiente  |

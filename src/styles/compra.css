@@ -1,0 +1,156 @@
+/* Compra: checkout, pago y mis pedidos. Extiende el sistema de DESIGN.md. */
+.estado-pedido.status-badge {
+  padding: 6px 11px;
+  font-size: 12px;
+  white-space: normal;
+  text-align: center;
+}
+.lineas-resumen {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+  font-size: 14px;
+}
+.lineas-resumen li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.lineas-resumen strong,
+.order-summary strong,
+.pedido-dinero strong,
+.desglose dd {
+  font-variant-numeric: tabular-nums;
+}
+.precio-justo-nota {
+  margin: 12px 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--forest-2);
+  font-size: 14px;
+  font-weight: 650;
+}
+.lista-pedidos {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tarjeta-pedido {
+  padding: 22px;
+}
+.pedido-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+.pedido-cabecera h2 {
+  margin: 0;
+  color: var(--forest);
+  font-size: 18px;
+  font-weight: 800;
+}
+.pedido-cabecera p,
+.pedido-lineas,
+.pedido-contacto {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.pedido-lineas {
+  margin-top: 12px;
+  color: var(--ink);
+}
+.pedido-dinero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin: 10px 0 14px;
+}
+.pedido-dinero strong {
+  color: var(--forest);
+  font-size: 20px;
+}
+.pedido-dinero span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.panel-accion {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #f7f8f5;
+}
+.estrellas-elegir {
+  display: flex;
+  gap: 4px;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+  color: var(--gold);
+}
+.estrellas-elegir legend {
+  margin-bottom: 6px;
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 800;
+}
+.estrellas-elegir label {
+  cursor: pointer;
+}
+.estrellas-elegir input {
+  position: absolute;
+  opacity: 0;
+}
+.estrellas-elegir label:has(input:focus-visible) {
+  outline: 3px solid rgba(233, 173, 40, 0.75);
+  border-radius: 6px;
+}
+.pedido-detalle {
+  margin-top: 16px;
+  font-size: 14px;
+}
+.pedido-detalle summary {
+  cursor: pointer;
+  color: var(--forest);
+  font-weight: 750;
+}
+.desglose {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+.desglose div {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f7f8f5;
+}
+.desglose dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+.desglose dd {
+  margin: 0;
+  font-weight: 750;
+}
+.historial {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+.historial strong {
+  color: var(--ink);
+}
+@media (max-width: 700px) {
+  .pedido-cabecera {
+    flex-direction: column;
+  }
+}

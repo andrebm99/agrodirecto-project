@@ -8,6 +8,8 @@ interface Resultado<T> {
   clave: string;
   datos?: T;
   error?: string;
+  /** Regla de negocio del error (RN-xx), si el backend la indicó. */
+  regla?: string | null;
 }
 
 /**
@@ -36,6 +38,7 @@ export function useConsulta<T>(
         setResultado({
           clave: claveCompleta,
           error: error instanceof ApiError ? error.message : "No pudimos cargar la información.",
+          regla: error instanceof ApiError ? error.regla : null,
         });
       });
     return () => control.abort();
@@ -48,6 +51,7 @@ export function useConsulta<T>(
   return {
     datos,
     error: vigente ? resultado.error : undefined,
+    regla: vigente ? (resultado.regla ?? null) : null,
     cargando: claveCompleta !== null && !vigente,
     recargar: () => setVersion((v) => v + 1),
   };
