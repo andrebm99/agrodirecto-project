@@ -21,6 +21,7 @@ export const confianzaApi = {
     evidenciaUrl?: string,
   ) => api.post<Disputa>(`/api/pedidos/${pedidoId}/disputa`, { motivo, descripcion, evidenciaUrl }),
   disputa: (id: number) => api.get<Disputa>(`/api/disputas/${id}`),
+  disputaDePedido: (pedidoId: number) => api.get<Disputa>(`/api/pedidos/${pedidoId}/disputa`),
   enviarDescargo: (id: number, descargo: string, evidenciaUrl?: string) =>
     api.post<Disputa>(`/api/disputas/${id}/descargo`, { descargo, evidenciaUrl }),
 
