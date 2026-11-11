@@ -11,13 +11,14 @@ import type {
 import { api, consulta } from "./cliente";
 
 export const catalogoApi = {
-  buscar: (filtro: FiltroCatalogo = {}) =>
-    api.get<ProductoResumen[]>(`/api/productos${consulta({ ...filtro })}`),
-  detalle: (id: number) => api.get<ProductoDetalle>(`/api/productos/${id}`),
-  categorias: () => api.get<Categoria[]>("/api/categorias"),
+  buscar: (filtro: FiltroCatalogo = {}, signal?: AbortSignal) =>
+    api.get<ProductoResumen[]>(`/api/productos${consulta({ ...filtro })}`, { signal }),
+  detalle: (id: number, signal?: AbortSignal) =>
+    api.get<ProductoDetalle>(`/api/productos/${id}`, { signal }),
+  categorias: (signal?: AbortSignal) => api.get<Categoria[]>("/api/categorias", { signal }),
   preciosReferencia: () => api.get<PrecioReferencia[]>("/api/precios-referencia"),
 
-  favoritos: () => api.get<ProductoResumen[]>("/api/favoritos"),
+  favoritos: (signal?: AbortSignal) => api.get<ProductoResumen[]>("/api/favoritos", { signal }),
   agregarFavorito: (productoId: number) => api.put<void>(`/api/favoritos/${productoId}`, {}),
   quitarFavorito: (productoId: number) => api.delete<void>(`/api/favoritos/${productoId}`),
 };

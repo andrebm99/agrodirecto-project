@@ -8,10 +8,11 @@ import type {
 import { api, consulta } from "./cliente";
 
 export const productoresApi = {
-  directorio: (filtro: { region?: string; atiende?: string } = {}) =>
-    api.get<ProductorPublico[]>(`/api/productores${consulta(filtro)}`),
-  detalle: (id: number) => api.get<ProductorPublico>(`/api/productores/${id}`),
-  regiones: () => api.get<string[]>("/api/regiones"),
+  directorio: (filtro: { region?: string; atiende?: string } = {}, signal?: AbortSignal) =>
+    api.get<ProductorPublico[]>(`/api/productores${consulta(filtro)}`, { signal }),
+  detalle: (id: number, signal?: AbortSignal) =>
+    api.get<ProductorPublico>(`/api/productores/${id}`, { signal }),
+  regiones: (signal?: AbortSignal) => api.get<string[]>("/api/regiones", { signal }),
   asociaciones: () => api.get<Asociacion[]>("/api/asociaciones"),
 
   gestionados: () => api.get<ProductorGestion[]>("/api/gestion/productores"),

@@ -11,7 +11,9 @@ export type View =
   | "publicar"
   | "recibidos"
   | "admin"
-  | "seguridad";
+  | "seguridad"
+  | "productores"
+  | "perfil";
 
 export type Role = "comprador" | "productor" | "agente" | "administrador";
 

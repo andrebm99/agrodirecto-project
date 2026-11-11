@@ -20,7 +20,7 @@ export function Footer({ navigate }: Pick<AgroDirectoState, "navigate">) {
         </div>
         <div>
           <h3>Transparencia</h3>
-          <p>Sin cobros en línea</p>
+          <p>Pago protegido hasta la entrega</p>
           <p>Ubicación aproximada</p>
           <p>Datos de demostración</p>
         </div>

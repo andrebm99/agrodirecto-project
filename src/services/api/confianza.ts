@@ -4,11 +4,15 @@ import { api, consulta } from "./cliente";
 export const confianzaApi = {
   calificar: (pedidoId: number, calificacion: number, comentario?: string) =>
     api.post<Resena>(`/api/pedidos/${pedidoId}/resena`, { calificacion, comentario }),
-  resenas: (productorId: number) => api.get<Resena[]>(`/api/productores/${productorId}/resenas`),
-  reputacion: (productorId: number) =>
-    api.get<Reputacion>(`/api/productores/${productorId}/reputacion`),
-  reputaciones: (productorIds: number[]) =>
-    api.get<Reputacion[]>(`/api/reputaciones${consulta({ productorIds: productorIds.join(",") })}`),
+  resenas: (productorId: number, signal?: AbortSignal) =>
+    api.get<Resena[]>(`/api/productores/${productorId}/resenas`, { signal }),
+  reputacion: (productorId: number, signal?: AbortSignal) =>
+    api.get<Reputacion>(`/api/productores/${productorId}/reputacion`, { signal }),
+  reputaciones: (productorIds: number[], signal?: AbortSignal) =>
+    api.get<Reputacion[]>(
+      `/api/reputaciones${consulta({ productorIds: productorIds.join(",") })}`,
+      { signal },
+    ),
 
   reportarProblema: (
     pedidoId: number,

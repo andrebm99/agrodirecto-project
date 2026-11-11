@@ -1,29 +1,21 @@
 "use client";
 
-import type { AgroDirectoState } from "@/hooks/useAgroDirecto";
+import type { EstadoApp } from "@/hooks/estadoApp";
+import { useConsulta } from "@/hooks/useConsulta";
 import { ProductCard } from "@/components/ProductCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { catalogoApi } from "@/services/api";
 
 export function Home({
   navigate,
   setRole,
-  setCategory,
-  setFavoritesOnly,
-  activeProducts,
-  addToCart,
-  toggleFavorite,
-  favorites,
-}: Pick<
-  AgroDirectoState,
-  | "navigate"
-  | "setRole"
-  | "setCategory"
-  | "setFavoritesOnly"
-  | "activeProducts"
-  | "addToCart"
-  | "toggleFavorite"
-  | "favorites"
->) {
+  catalogo,
+  setToast,
+}: Pick<EstadoApp, "navigate" | "setRole" | "catalogo" | "setToast">) {
+  // Productos publicados hoy: los primeros alimentan la vitrina y el total, las cifras reales del inicio.
+  const publicados = useConsulta("inicio:productos", (signal) => catalogoApi.buscar({}, signal));
+  const productos = publicados.datos ?? [];
+  const regiones = new Set(productos.map((p) => p.productor.region)).size;
   return (
     <>
       <section className="hero-section">
@@ -54,7 +46,7 @@ export function Home({
             <div className="trust-row">
               <span>✓ Productores verificados</span>
               <span>✓ Origen visible</span>
-              <span>✓ Sin cobros en línea</span>
+              <span>✓ Pago protegido hasta la entrega</span>
             </div>
           </div>
           <div className="hero-visual" aria-label="Productos frescos en un mercado agrícola">
@@ -70,8 +62,8 @@ export function Home({
             <div className="floating-card card-order">
               <span className="mini-icon">✓</span>
               <div>
-                <strong>Pedido registrado</strong>
-                <small>Sin cobro en línea</small>
+                <strong>Pago retenido</strong>
+                <small>Se libera al agricultor tras la entrega</small>
               </div>
             </div>
           </div>
@@ -88,8 +80,8 @@ export function Home({
             <button
               key={label}
               onClick={() => {
-                setCategory(label);
-                setFavoritesOnly(false);
+                catalogo.setCategoria(label);
+                catalogo.setSoloFavoritos(false);
                 navigate("catalogo");
               }}
             >
@@ -111,14 +103,16 @@ export function Home({
             </button>
           </div>
           <div className="row g-4">
-            {activeProducts.slice(0, 4).map((product) => (
-              <div className="col-12 col-sm-6 col-lg-3" key={product.id}>
+            {productos.slice(0, 4).map((producto) => (
+              <div className="col-12 col-sm-6 col-lg-3" key={producto.id}>
                 <ProductCard
-                  product={product}
-                  onOpen={(id) => navigate("producto", id)}
-                  onAdd={addToCart}
-                  onFavorite={toggleFavorite}
-                  favorite={favorites.includes(product.id)}
+                  producto={producto}
+                  favorito={catalogo.idsFavoritos.has(producto.id)}
+                  onAbrir={(id) => navigate("producto", id)}
+                  onFavorito={async (id) => {
+                    if (!(await catalogo.alternarFavorito(id)))
+                      setToast("Inicia sesión para guardar tus productos favoritos.");
+                  }}
                 />
               </div>
             ))}
@@ -194,11 +188,11 @@ export function Home({
           </div>
           <div className="impact-stats">
             <div>
-              <strong>{new Set(activeProducts.map((product) => product.location)).size}</strong>
-              <span>zonas representadas</span>
+              <strong>{regiones || "—"}</strong>
+              <span>regiones representadas</span>
             </div>
             <div>
-              <strong>{activeProducts.length}</strong>
+              <strong>{productos.length || "—"}</strong>
               <span>productos disponibles</span>
             </div>
             <div>

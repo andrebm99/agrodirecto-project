@@ -11,8 +11,8 @@ Cada tarea se desarrolla en su propia rama, se prueba y se integra a `main` con 
 | #   | Rama                          | Tarea                                                                            | Tema del curso (Unidad 2)                     | Estado     |
 | --- | ----------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------- | ---------- |
 | F0  | `chore/cliente-api`           | Cliente HTTP, tipos y servicios de la API                                        | S11–12 Consumo de API y peticiones asíncronas | Completada |
-| F1  | `feat/sesion-real`            | Login, registro y verificación en dos pasos reales; menú por rol                 | S13 Autenticación en el frontend              | Lista      |
-| F2  | `feat/catalogo-api`           | Catálogo, ficha de producto, directorio de productores y favoritos desde la API  | S6 Navegación y estado · S12                  | Pendiente  |
+| F1  | `feat/sesion-real`            | Login, registro y verificación en dos pasos reales; menú por rol                 | S13 Autenticación en el frontend              | Completada |
+| F2  | `feat/catalogo-api`           | Catálogo, ficha de producto, directorio de productores y favoritos desde la API  | S6 Navegación y estado · S12                  | Lista      |
 | F3  | `feat/compra`                 | Carrito, cotización transparente, pago simulado, mis pedidos, reclamos y reseñas | S11 Formularios · S12                         | Pendiente  |
 | F4  | `feat/panel-productor-agente` | Panel del productor y del agente de campo                                        | S11 Formularios · S12                         | Pendiente  |
 | F5  | `feat/tiempo-real`            | Pedidos y stock en vivo con WebSocket; campana de avisos                         | S9–10 Reactividad                             | Pendiente  |
@@ -82,7 +82,7 @@ src/
 
 ### F3 · Compra — `feat/compra`
 
-- **Carrito** por presentación, con la regla de un solo productor por pedido (RN-01) explicada en pantalla.
+- **Carrito** por presentación: adelantado a F2, porque la ficha del producto ya agrega presentaciones.
 - **Checkout:**
   - región de destino, modalidad de entrega y dirección;
   - **cotización con el desglose transparente**: cuánto recibe el agricultor y cuánto es el servicio (RN-A5).

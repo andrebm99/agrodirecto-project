@@ -1,13 +1,12 @@
 "use client";
 
-import type { AgroDirectoState } from "@/hooks/useAgroDirecto";
+import type { EstadoApp } from "@/hooks/estadoApp";
 import { Icon } from "@/components/Icon";
 import { ETIQUETA_ROL, panelDe } from "@/utils/sesion";
 
 export function Header({
-  navigate, setMobileOpen, mobileOpen, view, setFavoritesOnly, sessionRole,
-  favorites, setSearch, setCategory, cartCount, logout, usuario,
-}: Pick<AgroDirectoState, "navigate" | "setMobileOpen" | "mobileOpen" | "view" | "setFavoritesOnly" | "sessionRole" | "favorites" | "setSearch" | "setCategory" | "cartCount" | "logout" | "usuario">) {
+  navigate, setMobileOpen, mobileOpen, view, sessionRole, catalogo, cartCount, logout, usuario,
+}: Pick<EstadoApp, "navigate" | "setMobileOpen" | "mobileOpen" | "view" | "sessionRole" | "catalogo" | "cartCount" | "logout" | "usuario">) {
   return (
     <header className="site-header">
       <div className="container header-inner">
@@ -20,9 +19,9 @@ export function Header({
         </button>
         <nav className={`main-nav ${mobileOpen ? "is-open" : ""}`} aria-label="Navegacion principal">
           <button className={view === "inicio" ? "active" : ""} onClick={() => navigate("inicio")}>Inicio</button>
-          <button className={view === "catalogo" || view === "producto" ? "active" : ""} onClick={() => { setFavoritesOnly(false); navigate("catalogo"); }}>Productos</button>
+          <button className={view === "catalogo" || view === "producto" ? "active" : ""} onClick={() => { catalogo.setSoloFavoritos(false); navigate("catalogo"); }}>Productos</button>
           <button onClick={() => { navigate("inicio"); window.setTimeout(() => document.getElementById("como-funciona")?.scrollIntoView({ behavior: "smooth" }), 100); }}>Como funciona</button>
-          <button onClick={() => navigate("productor")}>Productores</button>
+          <button className={view === "productores" || view === "perfil" ? "active" : ""} onClick={() => navigate("productores")}>Productores</button>
           {usuario ? (
             <button className={view === "seguridad" ? "active" : ""} onClick={() => navigate("seguridad")}>
               Seguridad
@@ -38,8 +37,8 @@ export function Header({
             <Icon name="user" size={17} />{" "}
             <span className="cuenta-nombre">{usuario ? usuario.nombre.split(" ")[0] : "Ingresar"}</span>
           </button>
-          {favorites.length ? <button className="favorites-link" onClick={() => { setSearch(""); setCategory("Todos"); setFavoritesOnly(true); navigate("catalogo"); }} aria-label={`${favorites.length} productos favoritos`}>
-            <Icon name="heart" size={18} fill="currentColor" /><span>{favorites.length}</span>
+          {catalogo.idsFavoritos.size ? <button className="favorites-link" onClick={() => { catalogo.limpiarFiltros(); catalogo.setSoloFavoritos(true); navigate("catalogo"); }} aria-label={`${catalogo.idsFavoritos.size} productos favoritos`}>
+            <Icon name="heart" size={18} fill="currentColor" /><span>{catalogo.idsFavoritos.size}</span>
           </button> : null}
           <button className="cart-link" onClick={() => navigate("carrito")} aria-label={`Carrito con ${cartCount} productos`}>
             <Icon name="cart" size={20} /><span className="cart-badge">{cartCount}</span>

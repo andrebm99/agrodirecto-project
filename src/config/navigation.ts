@@ -14,4 +14,6 @@ export const VIEW_LABELS: Record<View, string> = {
   recibidos: "Pedidos recibidos",
   admin: "Administración",
   seguridad: "Seguridad de la cuenta",
+  productores: "Productores",
+  perfil: "Perfil del productor",
 };

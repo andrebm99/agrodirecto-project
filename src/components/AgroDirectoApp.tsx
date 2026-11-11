@@ -2,6 +2,9 @@
 
 import { useAgroDirecto } from "@/hooks/useAgroDirecto";
 import { useSesion } from "@/hooks/useSesion";
+import { useCatalogo } from "@/hooks/useCatalogo";
+import { useCarrito } from "@/hooks/useCarrito";
+import type { EstadoApp } from "@/hooks/estadoApp";
 import { AppModal } from "@/components/AppModal";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -18,14 +21,19 @@ import { ProductForm } from "@/screens/ProductForm";
 import { ReceivedOrders } from "@/screens/ReceivedOrders";
 import { Admin } from "@/screens/Admin";
 import { Seguridad } from "@/screens/Seguridad";
+import { Productores } from "@/screens/Productores";
+import { PerfilProductor } from "@/screens/PerfilProductor";
 import { accesoA, ETIQUETA_ROL, panelDe } from "@/utils/sesion";
 import { Icon } from "@/components/Icon";
 
 export default function AgroDirectoApp() {
   const sesion = useSesion();
-  const state = useAgroDirecto(sesion);
-  const { view, navigate, setFavoritesOnly, sessionRole, cartCount, toast } = state;
-  const screens = { inicio: Home, login: Login, registro: Register, catalogo: Catalog, producto: ProductDetail, carrito: Cart, confirmar: Checkout, pedidos: Orders, productor: ProducerDashboard, publicar: ProductForm, recibidos: ReceivedOrders, admin: Admin, seguridad: Seguridad };
+  const catalogo = useCatalogo(sesion);
+  const carrito = useCarrito();
+  const base = useAgroDirecto(sesion);
+  const state: EstadoApp = { ...base, catalogo, carrito, cartCount: carrito.unidades };
+  const { view, navigate, sessionRole, cartCount, toast } = state;
+  const screens = { inicio: Home, login: Login, registro: Register, catalogo: Catalog, producto: ProductDetail, carrito: Cart, confirmar: Checkout, pedidos: Orders, productor: ProducerDashboard, publicar: ProductForm, recibidos: ReceivedOrders, admin: Admin, seguridad: Seguridad, productores: Productores, perfil: PerfilProductor };
   const acceso = accesoA(view, sesion.usuario);
   // Una pantalla privada sin sesión muestra el login en su lugar (la dirección no cambia: al ingresar se continúa ahí).
   // Si falta configurar el segundo factor, se muestra la pantalla de seguridad.
@@ -59,7 +67,7 @@ export default function AgroDirectoApp() {
       {visible !== "login" && <Footer {...state} />}
       {visible !== "login" ? <nav className="mobile-bottom-nav" aria-label="Navegacion movil">
         <button className={view === "inicio" ? "active" : ""} onClick={() => navigate("inicio")}><Icon name="home" size={18} />Inicio</button>
-        <button className={view === "catalogo" || view === "producto" ? "active" : ""} onClick={() => { setFavoritesOnly(false); navigate("catalogo"); }}><Icon name="grid" size={18} />Productos</button>
+        <button className={view === "catalogo" || view === "producto" ? "active" : ""} onClick={() => { catalogo.setSoloFavoritos(false); navigate("catalogo"); }}><Icon name="grid" size={18} />Productos</button>
         <button className={view === "pedidos" ? "active" : ""} onClick={() => navigate("pedidos")}><Icon name="settings" size={18} />Pedidos</button>
         <button className={["productor", "publicar", "recibidos", "admin"].includes(view) ? "active" : ""} onClick={() => sessionRole ? navigate(panelDe(sessionRole)) : navigate("login")}><Icon name="user" size={18} />{sessionRole ? "Panel" : "Ingresar"}</button>
         <button className={view === "carrito" || view === "confirmar" ? "active" : ""} onClick={() => navigate("carrito")}><Icon name="cart" size={18} />Carrito{cartCount ? <b>{cartCount}</b> : null}</button>

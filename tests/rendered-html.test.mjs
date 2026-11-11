@@ -24,7 +24,7 @@ test("server-renders the AgroDirecto prototype", async () => {
   const html = await response.text();
   assert.match(html, /AgroDirecto/i);
   assert.match(html, /Del campo a tu negocio/i);
-  assert.match(html, /Sin cobros en línea/i);
+  assert.match(html, /Pago protegido hasta la entrega/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 

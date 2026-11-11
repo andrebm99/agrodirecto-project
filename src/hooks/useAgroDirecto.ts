@@ -437,6 +437,8 @@ export function useAgroDirecto(sesion: SesionState) {
   };
   return {
     sesion,
+    /** Id que acompaña a la ruta: #producto/3, #perfil/2. */
+    selectedProductId,
     sessionRole: sesion.rol,
     usuario: sesion.usuario,
     despuesDeIngresar,
