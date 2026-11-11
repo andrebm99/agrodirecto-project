@@ -233,3 +233,51 @@
 .tarjeta-pedido > .acciones-fila {
   margin-top: 14px;
 }
+
+/* ---------- Campana de avisos ---------- */
+.campana {
+  position: relative;
+}
+.campana-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 1200;
+  width: min(360px, calc(100vw - 32px));
+  max-height: 70vh;
+  overflow: auto;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 20px 55px rgba(23, 58, 43, 0.14);
+}
+.campana-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--forest);
+}
+.campana-panel ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.campana-panel li {
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+.campana-panel li.nueva {
+  background: #f2f8f4;
+}
+.campana-panel li p {
+  margin: 0 0 2px;
+  color: var(--ink);
+}
+.campana-panel small {
+  color: var(--muted);
+}

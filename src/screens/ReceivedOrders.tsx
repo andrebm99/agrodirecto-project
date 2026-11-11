@@ -5,7 +5,7 @@ import { ProducerDashboard } from "@/screens/ProducerDashboard";
 
 type Props = Pick<
   EstadoApp,
-  "navigate" | "setToast" | "gestion" | "catalogo" | "sessionRole" | "view"
+  "navigate" | "setToast" | "gestion" | "catalogo" | "sessionRole" | "view" | "tiempoReal"
 >;
 
 /** #recibidos abre el panel en la pestaña de pedidos. */

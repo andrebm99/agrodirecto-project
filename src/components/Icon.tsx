@@ -4,7 +4,7 @@ export type IconName =
   | "arrow-left" | "arrow-right" | "cart" | "check" | "close" | "grid"
   | "heart" | "home" | "info" | "leaf" | "menu" | "minus" | "plus"
   | "refresh" | "search" | "settings" | "star" | "sprout" | "trash" | "user" | "warning" | "wheat"
-  | "lock" | "eye" | "eye-off" | "copy" | "download";
+  | "lock" | "eye" | "eye-off" | "copy" | "download" | "bell";
 
 const paths: Record<IconName, ReactNode> = {
   "arrow-left": <path d="m15 18-6-6 6-6M9 12h11" />,
@@ -33,6 +33,7 @@ const paths: Record<IconName, ReactNode> = {
   "eye-off": <><path d="M4 4l16 16M10.6 6.1A9.8 9.8 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-2.7 3.4M6.6 7.7C3.9 9.5 2.5 12 2.5 12S6 18 12 18a9.3 9.3 0 0 0 4.2-1" /><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" /></>,
   copy: <><rect x="8" y="8" width="12" height="12" rx="2.5" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></>,
   download: <path d="M12 4v11m-5-5 5 5 5-5M5 20h14" />,
+  bell: <path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9ZM10 20a2 2 0 0 0 4 0" />,
   wheat: <><path d="M12 21V5" /><path d="M12 9C8 9 6 7 6 4c3 0 6 2 6 5ZM12 13c4 0 6-2 6-5-3 0-6 2-6 5ZM12 17c-4 0-6-2-6-5 3 0 6 2 6 5ZM12 5c4 0 6-2 6-5-3 0-6 2-6 5Z" /></>,
 };
 

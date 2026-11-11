@@ -5,6 +5,7 @@ import { useSesion } from "@/hooks/useSesion";
 import { useCatalogo } from "@/hooks/useCatalogo";
 import { useCarrito } from "@/hooks/useCarrito";
 import { useGestion } from "@/hooks/useGestion";
+import { useTiempoReal } from "@/hooks/useTiempoReal";
 import type { EstadoApp } from "@/hooks/estadoApp";
 import { AppModal } from "@/components/AppModal";
 import { Header } from "@/components/layout/Header";
@@ -33,7 +34,8 @@ export default function AgroDirectoApp() {
   const carrito = useCarrito();
   const gestion = useGestion(sesion);
   const base = useAgroDirecto(sesion);
-  const state: EstadoApp = { ...base, catalogo, carrito, gestion, cartCount: carrito.unidades };
+  const tiempoReal = useTiempoReal(sesion, gestion, base.setToast);
+  const state: EstadoApp = { ...base, catalogo, carrito, gestion, tiempoReal, cartCount: carrito.unidades };
   const { view, navigate, sessionRole, cartCount, toast } = state;
   const screens = { inicio: Home, login: Login, registro: Register, catalogo: Catalog, producto: ProductDetail, carrito: Cart, confirmar: Checkout, pedidos: Orders, productor: ProducerDashboard, publicar: ProductForm, recibidos: ReceivedOrders, admin: Admin, seguridad: Seguridad, productores: Productores, perfil: PerfilProductor };
   const acceso = accesoA(view, sesion.usuario);

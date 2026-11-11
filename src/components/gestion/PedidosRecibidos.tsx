@@ -21,12 +21,15 @@ const AVANCE = {
 export function PedidosRecibidos({
   productorId,
   setToast,
+  version,
 }: {
   productorId: number;
   setToast: (t: string) => void;
+  /** Cambia con cada evento en tiempo real: vuelve a consultar sin recargar. */
+  version: number;
 }) {
   const [filtro, setFiltro] = useState<Filtro>("atender");
-  const consulta = useConsulta(`recibidos:${productorId}`, () =>
+  const consulta = useConsulta(`recibidos:${productorId}:${version}`, () =>
     pedidosRecibidosApi.listar({ productorId }),
   );
   const todos = consulta.datos ?? [];

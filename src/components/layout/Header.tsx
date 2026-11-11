@@ -3,10 +3,11 @@
 import type { EstadoApp } from "@/hooks/estadoApp";
 import { Icon } from "@/components/Icon";
 import { ETIQUETA_ROL, panelDe } from "@/utils/sesion";
+import { Campana } from "@/components/layout/Campana";
 
 export function Header({
-  navigate, setMobileOpen, mobileOpen, view, sessionRole, catalogo, cartCount, logout, usuario,
-}: Pick<EstadoApp, "navigate" | "setMobileOpen" | "mobileOpen" | "view" | "sessionRole" | "catalogo" | "cartCount" | "logout" | "usuario">) {
+  navigate, setMobileOpen, mobileOpen, view, sessionRole, catalogo, cartCount, logout, usuario, tiempoReal,
+}: Pick<EstadoApp, "navigate" | "setMobileOpen" | "mobileOpen" | "view" | "sessionRole" | "catalogo" | "cartCount" | "logout" | "usuario" | "tiempoReal">) {
   return (
     <header className="site-header">
       <div className="container header-inner">
@@ -40,6 +41,7 @@ export function Header({
           {catalogo.idsFavoritos.size ? <button className="favorites-link" onClick={() => { catalogo.limpiarFiltros(); catalogo.setSoloFavoritos(true); navigate("catalogo"); }} aria-label={`${catalogo.idsFavoritos.size} productos favoritos`}>
             <Icon name="heart" size={18} fill="currentColor" /><span>{catalogo.idsFavoritos.size}</span>
           </button> : null}
+          <Campana usuario={usuario} version={tiempoReal.version} />
           <button className="cart-link" onClick={() => navigate("carrito")} aria-label={`Carrito con ${cartCount} productos`}>
             <Icon name="cart" size={20} /><span className="cart-badge">{cartCount}</span>
           </button>

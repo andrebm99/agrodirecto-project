@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Icon } from "@/components/Icon";
 import { LeafletMap } from "@/components/LeafletMap";
@@ -15,10 +15,17 @@ import { compararConMercado } from "@/utils/precio";
 
 type Props = Pick<
   EstadoApp,
-  "navigate" | "selectedProductId" | "catalogo" | "carrito" | "setToast"
+  "navigate" | "selectedProductId" | "catalogo" | "carrito" | "setToast" | "tiempoReal"
 >;
 
-export function ProductDetail({ navigate, selectedProductId, catalogo, carrito, setToast }: Props) {
+export function ProductDetail({
+  navigate,
+  selectedProductId,
+  catalogo,
+  carrito,
+  setToast,
+  tiempoReal,
+}: Props) {
   const consulta = useConsulta(`producto:${selectedProductId}`, (signal) =>
     catalogoApi.detalle(selectedProductId, signal),
   );
@@ -49,6 +56,7 @@ export function ProductDetail({ navigate, selectedProductId, catalogo, carrito, 
   return (
     <Ficha
       key={consulta.datos.id}
+      tiempoReal={tiempoReal}
       producto={consulta.datos}
       navigate={navigate}
       catalogo={catalogo}
@@ -59,12 +67,30 @@ export function ProductDetail({ navigate, selectedProductId, catalogo, carrito, 
 }
 
 function Ficha({
-  producto,
+  producto: original,
+  tiempoReal,
   navigate,
   catalogo,
   carrito,
   setToast,
 }: Omit<Props, "selectedProductId"> & { producto: ProductoDetalle }) {
+  // Stock en vivo: cuando otro comprador reserva o cancela, las cantidades se actualizan sin recargar.
+  const [stockVivo, setStockVivo] = useState<
+    Record<number, { stock: number; disponible: boolean }>
+  >({});
+  useEffect(
+    () =>
+      tiempoReal.escucharStock(original.id, (evento) =>
+        setStockVivo(Object.fromEntries(evento.formatos.map((f) => [f.formatoId, f]))),
+      ),
+    // escucharStock depende de la conexión; se vuelve a suscribir al reconectar.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [tiempoReal.conectado, original.id],
+  );
+  const producto = {
+    ...original,
+    formatos: original.formatos.map((f) => (stockVivo[f.id] ? { ...f, ...stockVivo[f.id] } : f)),
+  };
   const disponibles = producto.formatos.filter((f) => f.disponible);
   const [formatoId, setFormatoId] = useState<number | null>(
     (disponibles[0] ?? producto.formatos[0])?.id ?? null,

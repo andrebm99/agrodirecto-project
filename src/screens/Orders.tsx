@@ -12,12 +12,15 @@ import { fecha, money } from "@/utils/format";
 import { EN_CURSO, ESTADO_PEDIDO, METODO_PAGO, MODALIDAD, MOTIVO_RECLAMO } from "@/utils/pedido";
 
 type Props = Pick<EstadoApp, "navigate" | "setToast">;
+type PropsLista = Props & Pick<EstadoApp, "tiempoReal">;
 type Filtro = "curso" | "terminados" | "todos";
 
 /** Mis pedidos: estado, dinero, historial y las acciones que permite cada estado. */
-export function Orders({ navigate, setToast }: Props) {
+export function Orders({ navigate, setToast, tiempoReal }: PropsLista) {
   const [filtro, setFiltro] = useState<Filtro>("curso");
-  const consulta = useConsulta("mis-pedidos", () => pedidosApi.misPedidos());
+  const consulta = useConsulta(`mis-pedidos:${tiempoReal.version}`, () => pedidosApi.misPedidos(), {
+    mantenerAnteriores: true,
+  });
   const pedidos = (consulta.datos ?? []).filter((p) =>
     filtro === "todos"
       ? true

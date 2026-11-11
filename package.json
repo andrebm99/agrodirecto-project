@@ -18,6 +18,7 @@
     "test:unit": "vitest run"
   },
   "dependencies": {
+    "@stomp/stompjs": "^7.5.0",
     "bootstrap": "^5.3.8",
     "drizzle-orm": "0.45.2",
     "leaflet": "^1.9.4",

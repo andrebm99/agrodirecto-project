@@ -15,7 +15,7 @@ import { money } from "@/utils/format";
 
 type Props = Pick<
   EstadoApp,
-  "navigate" | "setToast" | "gestion" | "catalogo" | "sessionRole" | "view"
+  "navigate" | "setToast" | "gestion" | "catalogo" | "sessionRole" | "view" | "tiempoReal"
 >;
 type Pestana = "productos" | "pedidos" | "entregas" | "mensajes";
 
@@ -33,6 +33,7 @@ export function ProducerDashboard({
   catalogo,
   sessionRole,
   view,
+  tiempoReal,
 }: Props) {
   const [pestana, setPestana] = useState<Pestana>(view === "recibidos" ? "pedidos" : "productos");
   const [registrando, setRegistrando] = useState(false);
@@ -171,7 +172,11 @@ export function ProducerDashboard({
             <Productos productorId={activo.id} navigate={navigate} setToast={setToast} />
           ) : null}
           {pestana === "pedidos" ? (
-            <PedidosRecibidos productorId={activo.id} setToast={setToast} />
+            <PedidosRecibidos
+              productorId={activo.id}
+              setToast={setToast}
+              version={tiempoReal.version}
+            />
           ) : null}
           {pestana === "entregas" ? (
             <>
