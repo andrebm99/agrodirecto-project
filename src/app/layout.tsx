@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+// Extensiones por funcionalidad: se cargan después para extender el sistema base.
+import "@/styles/sesion.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),

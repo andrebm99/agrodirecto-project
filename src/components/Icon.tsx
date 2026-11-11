@@ -3,7 +3,8 @@ import type { ReactNode, SVGProps } from "react";
 export type IconName =
   | "arrow-left" | "arrow-right" | "cart" | "check" | "close" | "grid"
   | "heart" | "home" | "info" | "leaf" | "menu" | "minus" | "plus"
-  | "refresh" | "search" | "settings" | "star" | "sprout" | "trash" | "user" | "warning" | "wheat";
+  | "refresh" | "search" | "settings" | "star" | "sprout" | "trash" | "user" | "warning" | "wheat"
+  | "lock" | "eye" | "eye-off" | "copy" | "download";
 
 const paths: Record<IconName, ReactNode> = {
   "arrow-left": <path d="m15 18-6-6 6-6M9 12h11" />,
@@ -27,6 +28,11 @@ const paths: Record<IconName, ReactNode> = {
   trash: <><path d="M4 7h16M10 11v5M14 11v5M6 7l1 13h10l1-13M9 7V4h6v3" /></>,
   user: <><circle cx="12" cy="8" r="3.5" /><path d="M5 20a7 7 0 0 1 14 0" /></>,
   warning: <><path d="m12 3 9 16H3L12 3Z" /><path d="M12 9v4M12 16h.01" /></>,
+  lock: <><rect x="5" y="11" width="14" height="10" rx="2.5" /><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2" /></>,
+  eye: <><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="3" /></>,
+  "eye-off": <><path d="M4 4l16 16M10.6 6.1A9.8 9.8 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-2.7 3.4M6.6 7.7C3.9 9.5 2.5 12 2.5 12S6 18 12 18a9.3 9.3 0 0 0 4.2-1" /><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" /></>,
+  copy: <><rect x="8" y="8" width="12" height="12" rx="2.5" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></>,
+  download: <path d="M12 4v11m-5-5 5 5 5-5M5 20h14" />,
   wheat: <><path d="M12 21V5" /><path d="M12 9C8 9 6 7 6 4c3 0 6 2 6 5ZM12 13c4 0 6-2 6-5-3 0-6 2-6 5ZM12 17c-4 0-6-2-6-5 3 0 6 2 6 5ZM12 5c4 0 6-2 6-5-3 0-6 2-6 5Z" /></>,
 };
 

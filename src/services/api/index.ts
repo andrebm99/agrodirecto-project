@@ -7,4 +7,10 @@ export { pedidosApi, pedidosRecibidosApi } from "./pedidos";
 export { confianzaApi } from "./confianza";
 export { notificacionesApi } from "./notificaciones";
 export { adminApi } from "./admin";
-export { guardarToken, borrarToken, leerToken, EVENTO_SESION_EXPIRADA } from "./sesion";
+export {
+  guardarToken,
+  borrarToken,
+  leerToken,
+  tokenRecordado,
+  EVENTO_SESION_EXPIRADA,
+} from "./sesion";

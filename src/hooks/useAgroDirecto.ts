@@ -17,8 +17,15 @@ import { VIEW_LABELS } from "@/config/navigation";
 import { readStored, STORAGE_KEYS } from "@/services/storage";
 import { productStatus } from "@/utils/product";
 import { resizeProductImage } from "@/utils/image";
+import type { SesionState } from "@/hooks/useSesion";
+import type { Usuario } from "@/types/api";
+import { accesoA, panelDe, requiereConfigurarDobleFactor, rolDeApi } from "@/utils/sesion";
 
-export function useAgroDirecto() {
+/**
+ * Estado de las pantallas que aún usan datos de demostración. La sesión ya es real (useSesion);
+ * catálogo, carrito y pedidos se migran a la API en las tareas F2–F4.
+ */
+export function useAgroDirecto(sesion: SesionState) {
   const [view, setView] = useState<View>("inicio");
 
   const [selectedProductId, setSelectedProductId] = useState(1);
@@ -31,8 +38,6 @@ export function useAgroDirecto() {
 
   const [favorites, setFavorites] = useState<number[]>([]);
 
-  const [sessionRole, setSessionRole] = useState<Role | null>(null);
-
   const [hydrated, setHydrated] = useState(false);
 
   const [search, setSearch] = useState("");
@@ -43,6 +48,7 @@ export function useAgroDirecto() {
 
   const [favoritesOnly, setFavoritesOnly] = useState(false);
 
+  /** Rol sugerido al abrir el registro (por ejemplo, "Quiero vender" preselecciona productor). */
   const [role, setRole] = useState<Role>("comprador");
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -91,11 +97,6 @@ export function useAgroDirecto() {
         ),
       );
       setFavorites(readStored<number[]>(STORAGE_KEYS.favorites, []));
-      const storedRole = localStorage.getItem(STORAGE_KEYS.sessionRole) as Role | null;
-      if (storedRole && ["comprador", "productor", "administrador"].includes(storedRole)) {
-        setSessionRole(storedRole);
-        setRole(storedRole);
-      }
       syncHash();
       const [, screen, id] = window.location.hash.match(/^#([^/]+)\/?(\d+)?/) ?? [];
       if (screen === "publicar" && id) {
@@ -242,26 +243,25 @@ export function useAgroDirecto() {
 
   const showInfo = (title: string, message: string) => setModal({ type: "info", title, message });
 
-  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    localStorage.setItem(STORAGE_KEYS.sessionRole, role);
-    setSessionRole(role);
-    setToast(`Acceso de demostración como ${role}.`);
-    navigate(role === "productor" ? "productor" : role === "administrador" ? "admin" : "catalogo");
+  /**
+   * Después de ingresar o registrarse: primero el segundo factor si falta; si se llegó al login desde una
+   * pantalla privada, se continúa en ella; si no, se va al panel del rol.
+   */
+  const despuesDeIngresar = (usuario: Usuario, mensaje?: string) => {
+    setToast(mensaje ?? `Hola, ${usuario.nombre.split(" ")[0]}.`);
+    if (requiereConfigurarDobleFactor(usuario)) {
+      navigate("seguridad");
+      return;
+    }
+    const venia = view !== "login" && view !== "registro" && accesoA(view, usuario) === "permitido";
+    if (!venia) navigate(panelDe(rolDeApi(usuario.rol)));
   };
 
   const logout = () => {
-    localStorage.removeItem(STORAGE_KEYS.sessionRole);
-    setSessionRole(null);
+    sesion.cerrarSesion();
     setRole("comprador");
-    setToast("Sesión de demostración cerrada.");
+    setToast("Cerraste sesión.");
     navigate("inicio");
-  };
-
-  const handleRegister = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setToast("Cuenta de demostración creada correctamente.");
-    navigate("login");
   };
 
   const handleCheckout = (event: FormEvent<HTMLFormElement>) => {
@@ -430,13 +430,16 @@ export function useAgroDirecto() {
     setCart([]);
     setOrders(INITIAL_ORDERS);
     setFavorites([]);
-    setSessionRole(null);
     setRole("comprador");
     setModal(null);
     setToast("Datos de demostración restablecidos.");
     navigate("inicio");
   };
   return {
+    sesion,
+    sessionRole: sesion.rol,
+    usuario: sesion.usuario,
+    despuesDeIngresar,
     modal,
     setModal,
     setCart,
@@ -450,7 +453,6 @@ export function useAgroDirecto() {
     mobileOpen,
     view,
     setFavoritesOnly,
-    sessionRole,
     favorites,
     setSearch,
     setCategory,
@@ -461,9 +463,7 @@ export function useAgroDirecto() {
     addToCart,
     toggleFavorite,
     role,
-    handleLogin,
     showInfo,
-    handleRegister,
     search,
     favoritesOnly,
     category,

@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T06:09:18+00:00",
+  "title": "Design System: AgroDirecto",
+  "extensions": {
+    "colorMeta": {
+      "forest": {
+        "role": "primary",
+        "displayName": "Verde bosque",
+        "canonical": "#123c2d",
+        "tonalRamp": [
+          "oklch(15% 0.027 163)",
+          "oklch(25% 0.042 163)",
+          "oklch(35% 0.054 163)",
+          "oklch(45% 0.06 163)",
+          "oklch(55% 0.06 163)",
+          "oklch(65% 0.054 163)",
+          "oklch(80% 0.036 163)",
+          "oklch(95% 0.015 163)"
+        ]
+      },
+      "forest-deep": {
+        "role": "primary",
+        "displayName": "Verde bosque profundo",
+        "canonical": "#0a2d22",
+        "tonalRamp": [
+          "oklch(15% 0.023 163)",
+          "oklch(25% 0.035 163)",
+          "oklch(35% 0.045 163)",
+          "oklch(45% 0.05 163)",
+          "oklch(55% 0.05 163)",
+          "oklch(65% 0.045 163)",
+          "oklch(80% 0.03 163)",
+          "oklch(95% 0.013 163)"
+        ]
+      },
+      "leaf": {
+        "role": "secondary",
+        "displayName": "Verde hoja",
+        "canonical": "#2c7a4b",
+        "tonalRamp": [
+          "oklch(15% 0.05 152)",
+          "oklch(25% 0.077 152)",
+          "oklch(35% 0.099 152)",
+          "oklch(45% 0.11 152)",
+          "oklch(55% 0.11 152)",
+          "oklch(65% 0.099 152)",
+          "oklch(80% 0.066 152)",
+          "oklch(95% 0.028 152)"
+        ]
+      },
+      "leaf-light": {
+        "role": "secondary",
+        "displayName": "Verde hoja claro",
+        "canonical": "#4f9b68",
+        "tonalRamp": [
+          "oklch(15% 0.045 150)",
+          "oklch(25% 0.07 150)",
+          "oklch(35% 0.09 150)",
+          "oklch(45% 0.1 150)",
+          "oklch(55% 0.1 150)",
+          "oklch(65% 0.09 150)",
+          "oklch(80% 0.06 150)",
+          "oklch(95% 0.025 150)"
+        ]
+      },
+      "harvest-gold": {
+        "role": "tertiary",
+        "displayName": "Dorado de cosecha",
+        "canonical": "#e9ad28",
+        "tonalRamp": [
+          "oklch(15% 0.068 80)",
+          "oklch(25% 0.105 80)",
+          "oklch(35% 0.135 80)",
+          "oklch(45% 0.15 80)",
+          "oklch(55% 0.15 80)",
+          "oklch(65% 0.135 80)",
+          "oklch(80% 0.09 80)",
+          "oklch(95% 0.037 80)"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Crema",
+        "canonical": "#f7f3e9",
+        "tonalRamp": [
+          "oklch(15% 0.009 88)",
+          "oklch(25% 0.014 88)",
+          "oklch(35% 0.018 88)",
+          "oklch(45% 0.02 88)",
+          "oklch(55% 0.02 88)",
+          "oklch(65% 0.018 88)",
+          "oklch(80% 0.012 88)",
+          "oklch(95% 0.005 88)"
+        ]
+      },
+      "cream-deep": {
+        "role": "neutral",
+        "displayName": "Crema tostado",
+        "canonical": "#ede6d7",
+        "tonalRamp": [
+          "oklch(15% 0.011 85)",
+          "oklch(25% 0.017 85)",
+          "oklch(35% 0.023 85)",
+          "oklch(45% 0.025 85)",
+          "oklch(55% 0.025 85)",
+          "oklch(65% 0.023 85)",
+          "oklch(80% 0.015 85)",
+          "oklch(95% 0.006 85)"
+        ]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Fondo de página",
+        "canonical": "#fbfcfa",
+        "tonalRamp": [
+          "oklch(15% 0.003 140)",
+          "oklch(25% 0.004 140)",
+          "oklch(35% 0.005 140)",
+          "oklch(45% 0.006 140)",
+          "oklch(55% 0.006 140)",
+          "oklch(65% 0.005 140)",
+          "oklch(80% 0.004 140)",
+          "oklch(95% 0.002 140)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#1f2c27",
+        "tonalRamp": [
+          "oklch(15% 0.009 163)",
+          "oklch(25% 0.014 163)",
+          "oklch(35% 0.018 163)",
+          "oklch(45% 0.02 163)",
+          "oklch(55% 0.02 163)",
+          "oklch(65% 0.018 163)",
+          "oklch(80% 0.012 163)",
+          "oklch(95% 0.005 163)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Gris hierba",
+        "canonical": "#66736d",
+        "tonalRamp": [
+          "oklch(15% 0.007 160)",
+          "oklch(25% 0.01 160)",
+          "oklch(35% 0.013 160)",
+          "oklch(45% 0.015 160)",
+          "oklch(55% 0.015 160)",
+          "oklch(65% 0.013 160)",
+          "oklch(80% 0.009 160)",
+          "oklch(95% 0.004 160)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Línea",
+        "canonical": "#dfe5e1",
+        "tonalRamp": [
+          "oklch(15% 0.005 155)",
+          "oklch(25% 0.007 155)",
+          "oklch(35% 0.009 155)",
+          "oklch(45% 0.01 155)",
+          "oklch(55% 0.01 155)",
+          "oklch(65% 0.009 155)",
+          "oklch(80% 0.006 155)",
+          "oklch(95% 0.003 155)"
+        ]
+      },
+      "danger": {
+        "role": "neutral",
+        "displayName": "Rojo arcilla",
+        "canonical": "#b83c35",
+        "tonalRamp": [
+          "oklch(15% 0.063 28)",
+          "oklch(25% 0.098 28)",
+          "oklch(35% 0.126 28)",
+          "oklch(45% 0.14 28)",
+          "oklch(55% 0.14 28)",
+          "oklch(65% 0.126 28)",
+          "oklch(80% 0.084 28)",
+          "oklch(95% 0.035 28)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titular de portada; uno por página."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección en la página pública."
+      },
+      "page-title": {
+        "displayName": "Título de pantalla",
+        "purpose": "Título de cada pantalla de trabajo."
+      },
+      "body": {
+        "displayName": "Texto",
+        "purpose": "Lectura y formularios."
+      },
+      "label": {
+        "displayName": "Etiqueta",
+        "purpose": "Eyebrow en mayúsculas sobre los títulos."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel",
+        "value": "0 20px 55px rgba(23, 58, 43, 0.1)",
+        "purpose": "Paneles grandes y bloques destacados."
+      },
+      {
+        "name": "suave",
+        "value": "0 8px 28px rgba(23, 58, 43, 0.08)",
+        "purpose": "Tarjetas secundarias."
+      },
+      {
+        "name": "tarjeta-producto",
+        "value": "0 7px 24px rgba(24, 57, 43, 0.05)",
+        "purpose": "Tarjetas del catálogo en reposo."
+      },
+      {
+        "name": "boton-principal",
+        "value": "0 8px 20px rgba(18, 60, 45, 0.17)",
+        "purpose": "El botón verde bosque."
+      }
+    ],
+    "motion": [
+      {
+        "name": "estado",
+        "value": "0.2s ease",
+        "purpose": "Hover y cambios de estado de botones."
+      },
+      {
+        "name": "tarjeta",
+        "value": "0.25s",
+        "purpose": "Elevación de tarjetas al pasar el cursor."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "movil-pequeno",
+        "value": "430px"
+      },
+      {
+        "name": "movil",
+        "value": "700px"
+      },
+      {
+        "name": "tableta",
+        "value": "900px"
+      },
+      {
+        "name": "escritorio-compacto",
+        "value": "1050px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "La única acción principal de cada pantalla.",
+      "html": "<button class=\"ds-btn-primary\">Confirmar pedido</button>",
+      "css": ".ds-btn-primary{font-family:'Segoe UI',Aptos,Arial,sans-serif;font-weight:750;font-size:16px;border-radius:12px;padding:0.72rem 1.15rem;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;color:#fff;background:var(--forest,#123c2d);border:1px solid var(--forest,#123c2d);box-shadow:0 8px 20px rgba(18,60,45,0.17);}.ds-btn-primary:hover{background:var(--forest-2,#0a2d22);transform:translateY(-1px);}.ds-btn-primary:focus-visible{outline:3px solid rgba(233,173,40,0.75);outline-offset:2px;}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acciones que acompañan a la principal.",
+      "html": "<button class=\"ds-btn-secondary\">Ver catálogo</button>",
+      "css": ".ds-btn-secondary{font-family:'Segoe UI',Aptos,Arial,sans-serif;font-weight:750;font-size:16px;border-radius:12px;padding:0.72rem 1.15rem;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;color:var(--forest,#123c2d);background:#fff;border:1px solid #d9e0dc;}.ds-btn-secondary:hover{background:var(--cream,#f7f3e9);}.ds-btn-secondary:focus-visible{outline:3px solid rgba(233,173,40,0.75);outline-offset:2px;}"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campos cómodos para el dedo, de 48 px de alto.",
+      "html": "<label class=\"ds-field\">Correo electrónico<input class=\"ds-input\" type=\"email\" placeholder=\"compras@restaurante.pe\"></label>",
+      "css": ".ds-field{display:grid;gap:7px;font-family:'Segoe UI',Aptos,Arial,sans-serif;font-size:14px;font-weight:650;color:var(--ink,#1f2c27);}.ds-input{min-height:48px;padding:0 14px;border:1px solid #d9e0dc;border-radius:11px;background:#fff;color:var(--ink,#1f2c27);font-size:16px;}.ds-input:focus-visible{outline:3px solid rgba(233,173,40,0.75);outline-offset:2px;}"
+    },
+    {
+      "name": "Tarjeta de producto",
+      "kind": "card",
+      "refersTo": "card-product",
+      "description": "Producto del catálogo con precio desde y productor.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-img\"></div><div class=\"ds-card-body\"><span class=\"ds-eyebrow\">Tubérculos · Junín</span><h3>Papa amarilla seleccionada</h3><p>AndesVerde · verificado</p><strong>desde S/ 14.00</strong></div></article>",
+      "css": ".ds-card{width:260px;overflow:hidden;border:1px solid #e2e7e3;border-radius:18px;background:#fff;box-shadow:0 7px 24px rgba(24,57,43,0.05);transition:transform .25s,box-shadow .25s;font-family:'Segoe UI',Aptos,Arial,sans-serif;color:#1f2c27;}.ds-card:hover{transform:translateY(-3px);box-shadow:0 20px 55px rgba(23,58,43,0.1);}.ds-card-img{height:140px;background:linear-gradient(135deg,#ede6d7,#f7f3e9);}.ds-card-body{padding:16px;}.ds-card h3{margin:6px 0 4px;font-size:18px;}.ds-card p{margin:0 0 10px;color:#66736d;font-size:14px;}.ds-card strong{color:#123c2d;font-size:18px;}.ds-eyebrow{color:#2c7a4b;font-size:12px;font-weight:850;letter-spacing:1.5px;text-transform:uppercase;}"
+    },
+    {
+      "name": "Badges de estado",
+      "kind": "chip",
+      "refersTo": "badge-success",
+      "description": "Estados de pedido y producto en píldoras de color suave.",
+      "html": "<span class=\"ds-badge ds-ok\">Entregado</span> <span class=\"ds-badge ds-warn\">Pago retenido</span> <span class=\"ds-badge ds-info\">En preparación</span> <span class=\"ds-badge ds-bad\">En disputa</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;border-radius:20px;padding:6px 10px;font-family:'Segoe UI',Aptos,Arial,sans-serif;font-size:12px;font-weight:850;}.ds-ok{color:#17683a;background:#e2f4e8;}.ds-warn{color:#88620c;background:#fff2cf;}.ds-info{color:#256081;background:#e3f0f7;}.ds-bad{color:#a0312b;background:#f9e3e1;}"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Navegación principal de la cabecera.",
+      "html": "<nav class=\"ds-nav\"><button class=\"active\">Inicio</button><button>Productos</button><button>Productores</button></nav>",
+      "css": ".ds-nav{display:flex;gap:4px;font-family:'Segoe UI',Aptos,Arial,sans-serif;}.ds-nav button{border:0;background:transparent;color:#46544e;padding:10px 13px;border-radius:10px;font-size:14px;font-weight:650;cursor:pointer;}.ds-nav button:hover,.ds-nav button.active{background:#f7f3e9;color:#123c2d;}.ds-nav button:focus-visible{outline:3px solid rgba(233,173,40,0.75);outline-offset:2px;}"
+    },
+    {
+      "name": "Marca",
+      "kind": "custom",
+      "refersTo": "brand-mark",
+      "description": "La hoja inclinada con la A en Georgia.",
+      "html": "<span class=\"ds-brand\"><span class=\"ds-leaf\">A</span><span><strong>Agro</strong>Directo</span></span>",
+      "css": ".ds-brand{display:inline-flex;align-items:center;gap:10px;font-family:'Segoe UI',Aptos,Arial,sans-serif;font-size:20px;color:#123c2d;}.ds-leaf{width:40px;height:40px;display:inline-grid;place-items:center;border-radius:13px 13px 13px 4px;color:#fff;background:#123c2d;font-family:Georgia,serif;font-weight:800;font-size:23px;transform:rotate(-3deg);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El mercado de chacra",
+    "overview": "AgroDirecto se siente como un puesto de feria bien ordenado: cálido, cercano y confiable a simple vista. El verde profundo del campo y el papel crema dan el fondo; los titulares en serif tienen el carácter de un letrero pintado a mano, y el resto de la interfaz habla claro y sin adornos. La confianza nace de la cercanía: se ve quién cultiva, de dónde viene y cuánto cuesta.\n\nLa densidad es amable: espacios generosos, tarjetas redondeadas y botones grandes, pensados para el dedo en un celular. El color de marca está en las superficies y los titulares; el dorado aparece poco, como el sol del campo, para marcar lo que importa. Las sombras son suaves y tienen un tinte verde, nunca gris neutro.",
+    "keyCharacteristics": [
+      "Verde bosque como voz principal; crema como papel; dorado como acento escaso.",
+      "Titulares en Georgia, grandes y con letras juntas; texto de trabajo en sans-serif del sistema.",
+      "Formas redondeadas y amables (10–22 px); el logo es una hoja inclinada.",
+      "Sombras difusas con tinte verde que elevan tarjetas y botones sin endurecerlos.",
+      "La identidad del Avance 1 se mantiene: las pantallas nuevas la extienden, no la reemplazan."
+    ],
+    "rules": [
+      {
+        "name": "La regla del sol escaso",
+        "body": "El dorado de cosecha ocupa una fracción mínima de cada pantalla: el foco, un dato clave, un detalle. Si compite con el verde, sobra.",
+        "section": "colors"
+      },
+      {
+        "name": "La regla del verde que manda",
+        "body": "La acción principal de cada pantalla es verde bosque. Solo hay una por vista.",
+        "section": "colors"
+      },
+      {
+        "name": "La regla del letrero",
+        "body": "Georgia es solo para titulares. Los precios, cantidades, formularios y tablas van en la sans-serif.",
+        "section": "typography"
+      },
+      {
+        "name": "La regla de la lectura al sol",
+        "body": "Ningún texto que el usuario necesite leer para decidir o actuar (precios, estados, mensajes de error) baja de 12 px. Los badges de estado actuales de 9–10 px se corrigen en el pulido.",
+        "section": "typography"
+      },
+      {
+        "name": "La regla de la sombra verde",
+        "body": "Toda sombra lleva el tinte del bosque (rgba 18–24, 54–60, 41–45). Una sombra gris neutra se ve ajena a la marca.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar verde bosque para la única acción principal de cada pantalla.",
+      "Do escribir titulares en Georgia y todo dato o formulario en la sans-serif del sistema.",
+      "Do mantener áreas táctiles de al menos 48 px de alto en campos y botones.",
+      "Do teñir de verde todas las sombras (ver Elevation & Depth).",
+      "Do mostrar el precio por kg y el precio de referencia del mercado con la misma claridad que el precio.",
+      "Do reutilizar los pares de color de estado para cualquier estado nuevo (pago retenido, en disputa, reembolsado)."
+    ],
+    "donts": [
+      "Don't usar el dorado de cosecha como color de botones o de grandes superficies.",
+      "Don't bajar de 12 px un texto que haga falta para decidir o actuar.",
+      "Don't usar sombras grises o negras, ni esquinas rectas en botones y tarjetas.",
+      "Don't reemplazar la identidad del Avance 1: las pantallas nuevas extienden este sistema.",
+      "Don't mostrar íconos sin texto en acciones importantes."
+    ]
+  }
+}

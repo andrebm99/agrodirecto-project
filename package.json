@@ -22,6 +22,7 @@
     "drizzle-orm": "0.45.2",
     "leaflet": "^1.9.4",
     "nitro": "3.0.260903-beta",
+    "qrcode": "^1.5.4",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },
@@ -33,6 +34,7 @@
     "@tailwindcss/postcss": "4.2.1",
     "@types/leaflet": "^1.9.22",
     "@types/node": "22.19.19",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",

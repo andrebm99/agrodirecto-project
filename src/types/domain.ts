@@ -10,9 +10,10 @@ export type View =
   | "productor"
   | "publicar"
   | "recibidos"
-  | "admin";
+  | "admin"
+  | "seguridad";
 
-export type Role = "comprador" | "productor" | "administrador";
+export type Role = "comprador" | "productor" | "agente" | "administrador";
 
 export type ProductStatus = "Activo" | "Borrador" | "Retirado";
 

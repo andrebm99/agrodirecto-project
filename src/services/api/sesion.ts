@@ -29,6 +29,15 @@ export function guardarToken(token: string, recordar: boolean) {
   }
 }
 
+/** true si el token actual se guardó con "Recordarme". */
+export function tokenRecordado(): boolean {
+  try {
+    return window.localStorage.getItem(CLAVE) !== null;
+  } catch {
+    return false;
+  }
+}
+
 export function borrarToken() {
   almacenes().forEach((almacen) => almacen.removeItem(CLAVE));
 }

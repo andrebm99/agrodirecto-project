@@ -48,6 +48,7 @@ describe("cliente de la API", () => {
     const [url, opciones] = fetchSimulado.mock.calls[0];
     expect(url).toBe(`${API_URL}/api/auth/yo`);
     expect(opciones.headers.Authorization).toBe("Bearer abc.def.ghi");
+    expect(opciones.headers["Accept-Language"]).toBe("es-PE");
   });
 
   it("no envía el token en peticiones públicas", async () => {

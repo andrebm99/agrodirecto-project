@@ -41,7 +41,11 @@ export async function peticion<T>(
   cuerpo?: unknown,
   opciones: OpcionesPeticion = {},
 ): Promise<T> {
-  const cabeceras: Record<string, string> = { Accept: "application/json" };
+  // es-PE: el backend devuelve los mensajes de validación en español.
+  const cabeceras: Record<string, string> = {
+    Accept: "application/json",
+    "Accept-Language": "es-PE",
+  };
   if (cuerpo !== undefined) cabeceras["Content-Type"] = "application/json";
   const token = opciones.sinToken ? null : (opciones.token ?? leerToken());
   if (token) cabeceras.Authorization = `Bearer ${token}`;
