@@ -71,6 +71,10 @@ pnpm test           # pruebas unitarias (Vitest) + compilación + pruebas de ren
 
 En Cloudflare se define la variable `VITE_API_URL` con la dirección pública del backend (por ejemplo `https://agrodirecto-api.onrender.com`) antes de compilar. El backend debe incluir el dominio del frontend en sus orígenes permitidos (CORS).
 
+## Trabajo en equipo
+
+Cómo clonar, levantar localmente y subir cambios: ver [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Equipo
 
 - Jaime Israel Aramburu Condori.
