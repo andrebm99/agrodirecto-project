@@ -362,6 +362,7 @@ export interface Pedido {
   creadoEn: Fecha;
   actualizadoEn: Fecha;
   fechaEntregaEstimada: string | null;
+  entregadoEn: Fecha | null;
   modalidadEntrega: ModalidadEntrega;
   regionDestino: string;
   /** null para el agricultor hasta que acepta (RN-24). */

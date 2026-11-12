@@ -129,6 +129,7 @@ function TarjetaPedido({
           </h2>
           <p>
             {fecha(p.creadoEn)} · {MODALIDAD[p.modalidadEntrega].titulo} · {p.regionDestino}
+            {p.entregadoEn ? ` · Entregado el ${fecha(p.entregadoEn)}` : ""}
           </p>
         </div>
         <EstadoPedido estado={p.estado} />
