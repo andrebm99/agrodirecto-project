@@ -123,6 +123,7 @@ function Recibido({
           <p>
             {fecha(p.creadoEn)} · {MODALIDAD[p.modalidadEntrega].titulo} a {p.regionDestino}
             {p.fechaEntregaEstimada ? ` · entregar hasta el ${fecha(p.fechaEntregaEstimada)}` : ""}
+            {p.entregadoEn ? ` · entregado el ${fecha(p.entregadoEn)}` : ""}
             {p.comprador.verificado ? " · comprador verificado" : ""}
           </p>
         </div>

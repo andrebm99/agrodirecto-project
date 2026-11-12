@@ -362,6 +362,7 @@ export interface Pedido {
   creadoEn: Fecha;
   actualizadoEn: Fecha;
   fechaEntregaEstimada: string | null;
+  entregadoEn: Fecha | null;
   modalidadEntrega: ModalidadEntrega;
   regionDestino: string;
   /** null para el agricultor hasta que acepta (RN-24). */
@@ -397,7 +398,13 @@ export interface Pedido {
 
 // ---------- Confianza ----------
 
-export type MotivoDisputa = "NO_ENTREGADO" | "CALIDAD" | "CANTIDAD" | "PRODUCTO_DISTINTO" | "OTRO";
+export type MotivoDisputa =
+  | "NO_ENTREGADO"
+  | "CALIDAD"
+  | "CANTIDAD"
+  | "PRODUCTO_DISTINTO"
+  | "DANIO_TRANSPORTE"
+  | "OTRO";
 export type EstadoDisputa = "ABIERTA" | "A_FAVOR_COMPRADOR" | "A_FAVOR_PRODUCTOR";
 export type NivelReputacion = "NUEVO" | "CONFIABLE" | "REGULAR" | "EN_OBSERVACION";
 
