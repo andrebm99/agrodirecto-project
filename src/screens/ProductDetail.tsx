@@ -251,16 +251,17 @@ function Ficha({
               <h2 id="titulo-precio-justo">Precio justo</h2>
               {comparacion ? (
                 <p>
-                  <strong>{money(comparacion.precioPorKg)} por kg</strong>. Mercado:{" "}
-                  {money(comparacion.mayoristaKg)} mayorista / {money(comparacion.minoristaKg)}{" "}
+                  Pagas <strong>{money(comparacion.precioPorKg)} por kg</strong>. Mercado:{" "}
+                  {money(comparacion.mayoristaKg)} mayorista y {money(comparacion.minoristaKg)} en
                   tienda
                   {comparacion.ahorroFrenteMinorista > 0
-                    ? ` · ${comparacion.ahorroFrenteMinorista}% menos en tienda.`
+                    ? `: ${comparacion.ahorroFrenteMinorista}% menos.`
                     : "."}
                 </p>
               ) : null}
               <p>
-                Productor recibe su precio. Servicio AgroDirecto: 5%, visible antes de confirmar.
+                {productor.nombreComercial} recibe su precio. El servicio de AgroDirecto (5%) lo
+                paga quien compra.
               </p>
               {producto.precioReferencia ? (
                 <p className="fuente">
