@@ -54,6 +54,7 @@ export const MOTIVO_RECLAMO: Record<MotivoDisputa, { texto: string; requiereFoto
   CALIDAD: { texto: "Calidad distinta", requiereFoto: true },
   CANTIDAD: { texto: "Llegó menos cantidad", requiereFoto: true },
   PRODUCTO_DISTINTO: { texto: "Llegó otro producto", requiereFoto: true },
+  DANIO_TRANSPORTE: { texto: "Daño durante el transporte", requiereFoto: true },
   OTRO: { texto: "Otro problema", requiereFoto: false },
 };
 

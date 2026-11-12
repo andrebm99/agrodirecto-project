@@ -398,7 +398,13 @@ export interface Pedido {
 
 // ---------- Confianza ----------
 
-export type MotivoDisputa = "NO_ENTREGADO" | "CALIDAD" | "CANTIDAD" | "PRODUCTO_DISTINTO" | "OTRO";
+export type MotivoDisputa =
+  | "NO_ENTREGADO"
+  | "CALIDAD"
+  | "CANTIDAD"
+  | "PRODUCTO_DISTINTO"
+  | "DANIO_TRANSPORTE"
+  | "OTRO";
 export type EstadoDisputa = "ABIERTA" | "A_FAVOR_COMPRADOR" | "A_FAVOR_PRODUCTOR";
 export type NivelReputacion = "NUEVO" | "CONFIABLE" | "REGULAR" | "EN_OBSERVACION";
 
